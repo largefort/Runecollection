@@ -13,22 +13,36 @@
         </header>
 
         <main>
-            <div class="homepage">
+            <!-- Roll Page -->
+            <div id="homepage" class="page">
                 <button id="rollButton">Roll for a Rune</button>
             </div>
 
-            <section id="runesCollection" class="hidden">
+            <!-- Collection Page -->
+            <div id="runesCollection" class="page hidden">
                 <h2>Your Runes Collection</h2>
-                <div class="rune-grid elder-futhark">
+                <div class="rune-list">
                     <h3>Elder Futhark Runes</h3>
-                    <div id="elderGrid" class="grid"></div>
-                </div>
-                <div class="rune-grid younger-futhark">
+                    <div id="elderList" class="list"></div>
+                    
                     <h3>Younger Futhark Runes</h3>
-                    <div id="youngerGrid" class="grid"></div>
+                    <div id="youngerList" class="list"></div>
                 </div>
-            </section>
+            </div>
+
+            <!-- Journal Page -->
+            <div id="journalPage" class="page hidden">
+                <h2>Rune Journal</h2>
+                <p>Coming Soon!</p>
+            </div>
         </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <button class="nav-btn" data-target="homepage">Roll</button>
+            <button class="nav-btn" data-target="runesCollection">Collection</button>
+            <button class="nav-btn" data-target="journalPage">Journal</button>
+        </nav>
 
         <!-- Modal for Detailed Rune Information -->
         <div id="modal" class="modal hidden">
