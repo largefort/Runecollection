@@ -1,0 +1,106 @@
+/* styles.css */
+
+body {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-family: "Arial", sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #a67c00; /* Gold-like Norse style */
+    margin-top: 20px;
+}
+
+#rollButton {
+    padding: 15px 25px;
+    font-size: 1.2em;
+    background: #333;
+    color: #e0e0e0;
+    border: 2px solid #a67c00;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#rollButton:hover {
+    background: #a67c00;
+    color: #1a1a1a;
+}
+
+.rune-grid {
+    margin: 20px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.rune-item {
+    padding: 10px;
+    background: #333;
+    color: #a67c00;
+    border-radius: 8px;
+    border: 2px solid #a67c00;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.rune-item:hover .rune-description {
+    display: block;
+}
+
+.rune-description {
+    display: none;
+    position: absolute;
+    bottom: -50px;
+    background: #222;
+    padding: 8px;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 0.9em;
+}
+
+/* Modal styling */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+
+.modal-content {
+    background: #222;
+    padding: 20px;
+    color: #e0e0e0;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    max-width: 500px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
