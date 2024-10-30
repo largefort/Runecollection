@@ -1,29 +1,37 @@
-/* styles.css */
-
+/* General Styles */
 body {
     background: #1a1a1a;
     color: #e0e0e0;
     font-family: "Arial", sans-serif;
+    margin: 0;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
 }
 
+/* Header */
 header h1 {
-    font-size: 2.5em;
-    color: #a67c00; /* Gold-like Norse style */
+    font-size: 2em;
+    color: #a67c00;
     margin-top: 20px;
 }
 
+/* Roll Button */
 #rollButton {
     padding: 15px 25px;
     font-size: 1.2em;
     background: #333;
     color: #e0e0e0;
     border: 2px solid #a67c00;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -33,43 +41,57 @@ header h1 {
     color: #1a1a1a;
 }
 
-.rune-grid {
-    margin: 20px 0;
+/* Bottom Navigation Bar */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background: #333;
+    padding: 10px 0;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+.nav-btn {
+    color: #e0e0e0;
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.nav-btn:hover {
+    color: #a67c00;
+}
+
+/* Rune Collection Display */
+.rune-list {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+    padding: 0 20px;
 }
 
 .rune-item {
-    padding: 10px;
+    padding: 15px;
     background: #333;
     color: #a67c00;
     border-radius: 8px;
     border: 2px solid #a67c00;
-    position: relative;
     cursor: pointer;
     transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.rune-item:hover .rune-description {
-    display: block;
-}
-
-.rune-description {
-    display: none;
-    position: absolute;
-    bottom: -50px;
-    background: #222;
-    padding: 8px;
-    border-radius: 4px;
-    color: #e0e0e0;
-    font-size: 0.9em;
-}
-
-/* Modal styling */
+/* Modal Styling */
 .modal {
     display: flex;
     justify-content: center;
@@ -89,8 +111,7 @@ header h1 {
     color: #e0e0e0;
     border-radius: 8px;
     text-align: center;
-    position: relative;
-    max-width: 500px;
+    max-width: 400px;
 }
 
 .close {
