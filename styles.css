@@ -1,127 +1,172 @@
 /* General Styles */
 body {
-    background: #1a1a1a;
-    color: #e0e0e0;
-    font-family: "Arial", sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
+    padding: 0;
 }
 
 .container {
     max-width: 600px;
     margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Header */
-header h1 {
-    font-size: 2em;
-    color: #a67c00;
-    margin-top: 20px;
+h1 {
+    font-size: 2.5em;
+    color: #333;
 }
 
-/* Roll Button */
-#rollButton {
-    padding: 15px 25px;
-    font-size: 1.2em;
-    background: #333;
-    color: #e0e0e0;
-    border: 2px solid #a67c00;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.3s;
+/* Page Styles */
+.page {
+    display: none;
 }
 
-#rollButton:hover {
-    background: #a67c00;
-    color: #1a1a1a;
+.page.hidden {
+    display: none;
 }
 
-/* Bottom Navigation Bar */
+/* Bottom Navigation Styles */
 .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     bottom: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    background: #333;
-    padding: 10px 0;
 }
 
 .nav-btn {
-    color: #e0e0e0;
-    background: none;
+    flex: 1;
+    padding: 10px;
     border: none;
-    font-size: 1.2em;
+    background: none;
     cursor: pointer;
-    padding: 5px;
+    font-size: 1.2em;
+    color: #333;
 }
 
 .nav-btn:hover {
-    color: #a67c00;
+    background-color: #e0e0e0;
 }
 
-/* Rune Collection Display */
-.rune-list {
-    margin: 20px 0;
-    text-align: left;
-}
-
-.list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 20px;
-}
-
-.rune-item {
-    padding: 15px;
-    background: #333;
-    color: #a67c00;
-    border-radius: 8px;
-    border: 2px solid #a67c00;
+/* Roll Button Styles */
+#rollButton {
+    padding: 15px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    transition: background-color 0.3s;
 }
 
-/* Modal Styling */
+#rollButton:hover {
+    background-color: #0056b3;
+}
+
+/* Modal Styles */
 .modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 10;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-    background: #222;
+    background: white;
     padding: 20px;
-    color: #e0e0e0;
-    border-radius: 8px;
-    text-align: center;
-    max-width: 400px;
+    margin: 15% auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
     cursor: pointer;
+    float: right;
+    font-size: 1.5em;
+    color: #333;
 }
 
+.close:hover {
+    color: #007bff;
+}
+
+/* Rune List Styles */
+.rune-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.rune-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.rune-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Journal Entry Styles */
+.journal-entry {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.entry-date {
+    display: block;
+    font-size: 0.8em;
+    color: gray;
+}
+
+/* Profile Message Styles */
+#profileMessage {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+    color: green;
+}
+
+/* Search Input Styles */
+#searchInput {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1em;
+}
+
+/* Search Results Styles */
+#searchResults {
+    margin-top: 10px;
+}
+
+/* Hidden Class */
 .hidden {
     display: none;
 }
