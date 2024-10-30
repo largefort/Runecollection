@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norse Runes Learning</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Norse Runes Learning</h1>
+        </header>
+
+        <main>
+            <div class="homepage">
+                <button id="rollButton">Roll for a Rune</button>
+            </div>
+
+            <section id="runesCollection" class="hidden">
+                <h2>Your Runes Collection</h2>
+                <div class="rune-grid elder-futhark">
+                    <h3>Elder Futhark Runes</h3>
+                    <div id="elderGrid" class="grid"></div>
+                </div>
+                <div class="rune-grid younger-futhark">
+                    <h3>Younger Futhark Runes</h3>
+                    <div id="youngerGrid" class="grid"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal for Detailed Rune Information -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <span id="closeModal" class="close">&times;</span>
+                <h2 id="runeName"></h2>
+                <p id="runeDescription"></p>
+                <p id="runeLore"></p>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>
