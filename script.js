@@ -49,12 +49,14 @@ const youngerFutharkRunes = [
 // Collected Runes Data
 const collectedRunes = { elder: [], younger: [] };
 
-// Roll Button Event
+// Roll Button Event and Local Storage Load Functions
 document.getElementById("rollButton").addEventListener("click", rollForRune);
+window.addEventListener("load", () => {
+    loadRunesFromStorage();
+    displayJournalEntries();
+});
 
-// Load collections from localStorage on page load
-window.addEventListener("load", loadRunesFromStorage);
-
+// Load collections from localStorage
 function loadRunesFromStorage() {
     const savedElderRunes = JSON.parse(localStorage.getItem("elderRunes")) || [];
     const savedYoungerRunes = JSON.parse(localStorage.getItem("youngerRunes")) || [];
@@ -105,12 +107,66 @@ document.querySelectorAll('.nav-btn').forEach(button => {
 
 // Modal Functionality
 function openModal(rune) {
-    document.getElementById("modal").classList.remove("hidden");
     document.getElementById("runeName").innerText = rune.name;
     document.getElementById("runeDescription").innerText = rune.description;
     document.getElementById("runeLore").innerText = rune.lore;
+    document.getElementById("modal").classList.remove("hidden");
 }
 
 document.getElementById("closeModal").addEventListener("click", () => {
     document.getElementById("modal").classList.add("hidden");
 });
+
+// --- Journal Functionality ---
+let journalEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+
+document.getElementById("saveJournalEntry").addEventListener("click", () => {
+    const entryText = document.getElementById("journalEntry").value.trim();
+    if (entryText) {
+        const entry = { text: entryText, date: new Date().toLocaleString() };
+        journalEntries.push(entry);
+        saveJournalEntries();
+        displayJournalEntries();
+        document.getElementById("journalEntry").value = "";
+    }
+});
+
+function saveJournalEntries() {
+    localStorage.setItem("journalEntries", JSON.stringify(journalEntries));
+}
+
+function displayJournalEntries() {
+    const entriesList = document.getElementById("journalEntriesList");
+    entriesList.innerHTML = "";
+
+    journalEntries.forEach((entry, index) => {
+        const entryDiv = document.createElement("div");
+        entryDiv.classList.add("journal-entry");
+
+        const entryText = document.createElement("p");
+        entryText.innerText = entry.text;
+
+        const entryDate = document.createElement("span");
+        entryDate.classList.add("entry-date");
+        entryDate.innerText = entry.date;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-entry");
+        deleteButton.innerText = "Delete";
+        deleteButton.addEventListener("click", () => {
+            deleteJournalEntry(index);
+        });
+
+        entryDiv.appendChild(entryText);
+        entryDiv.appendChild(entryDate);
+        entryDiv.appendChild(deleteButton);
+
+        entriesList.appendChild(entryDiv);
+    });
+}
+
+function deleteJournalEntry(index) {
+    journalEntries.splice(index, 1);
+    saveJournalEntries();
+    displayJournalEntries();
+}
