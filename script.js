@@ -49,11 +49,15 @@ const youngerFutharkRunes = [
 // Collected Runes Data
 const collectedRunes = { elder: [], younger: [] };
 
+// Profile Data
+let userProfile = { username: "" };
+
 // Roll Button Event and Local Storage Load Functions
 document.getElementById("rollButton").addEventListener("click", rollForRune);
 window.addEventListener("load", () => {
     loadRunesFromStorage();
     displayJournalEntries();
+    checkUserProfile();
 });
 
 // Load collections from localStorage
@@ -69,41 +73,45 @@ function loadRunesFromStorage() {
 function rollForRune() {
     const allRunes = elderFutharkRunes.concat(youngerFutharkRunes);
     const randomRune = allRunes[Math.floor(Math.random() * allRunes.length)];
-    const runeType = elderFutharkRunes.includes(randomRune) ? "elder" : "younger";
-    addRuneToCollection(randomRune, runeType);
-}
-
-// Save to localStorage
-function saveToStorage() {
-    localStorage.setItem("elderRunes", JSON.stringify(collectedRunes.elder));
-    localStorage.setItem("youngerRunes", JSON.stringify(collectedRunes.younger));
+    
+    if (randomRune.name.includes("Fehu") || randomRune.name.includes("Uruz")) { // Example probability
+        addRuneToCollection(randomRune, randomRune.name.includes("Fehu") ? "elder" : "younger");
+    }
 }
 
 // Add Rune to Collection
 function addRuneToCollection(rune, type) {
-    const listId = type === "elder" ? "elderList" : "youngerList";
-    const list = document.getElementById(listId);
+    if (type === "elder" && !collectedRunes.elder.includes(rune)) {
+        collectedRunes.elder.push(rune);
+        localStorage.setItem("elderRunes", JSON.stringify(collectedRunes.elder));
+        displayRunes();
+    } else if (type === "younger" && !collectedRunes.younger.includes(rune)) {
+        collectedRunes.younger.push(rune);
+        localStorage.setItem("youngerRunes", JSON.stringify(collectedRunes.younger));
+        displayRunes();
+    }
+}
 
-    if (collectedRunes[type].some(collected => collected.name === rune.name)) return;
+// Display Runes
+function displayRunes() {
+    const elderList = document.getElementById("elderList");
+    const youngerList = document.getElementById("youngerList");
 
-    collectedRunes[type].push(rune);
-    saveToStorage();
+    elderList.innerHTML = "";
+    youngerList.innerHTML = "";
 
+    collectedRunes.elder.forEach(rune => createRuneElement(rune, elderList));
+    collectedRunes.younger.forEach(rune => createRuneElement(rune, youngerList));
+}
+
+// Create Rune Element
+function createRuneElement(rune, list) {
     const runeElement = document.createElement("div");
     runeElement.classList.add("rune-item");
     runeElement.innerText = rune.name;
-
     runeElement.addEventListener("click", () => openModal(rune));
     list.appendChild(runeElement);
 }
-
-// Bottom Navigation
-document.querySelectorAll('.nav-btn').forEach(button => {
-    button.addEventListener("click", () => {
-        document.querySelectorAll(".page").forEach(page => page.classList.add("hidden"));
-        document.getElementById(button.dataset.target).classList.remove("hidden");
-    });
-});
 
 // Modal Functionality
 function openModal(rune) {
@@ -116,6 +124,86 @@ function openModal(rune) {
 document.getElementById("closeModal").addEventListener("click", () => {
     document.getElementById("modal").classList.add("hidden");
 });
+
+// Profile Creation Functionality
+document.getElementById("createProfileButton").addEventListener("click", createProfile);
+
+function createProfile() {
+    const username = document.getElementById("usernameInput").value.trim();
+    if (username.startsWith("@") && username.length > 1) {
+        userProfile.username = username;
+        document.getElementById("profileMessage").innerText = "Profile created: " + username;
+        document.getElementById("profileMessage").classList.remove("hidden");
+        localStorage.setItem("userProfile", JSON.stringify(userProfile));
+        switchToPage("homepage");
+    } else {
+        alert("Please enter a valid username starting with '@'.");
+    }
+}
+
+function checkUserProfile() {
+    const savedProfile = JSON.parse(localStorage.getItem("userProfile"));
+    if (savedProfile && savedProfile.username) {
+        userProfile = savedProfile;
+        document.getElementById("profileMessage").innerText = "Welcome back, " + userProfile.username;
+        document.getElementById("profileMessage").classList.remove("hidden");
+        switchToPage("homepage");
+    } else {
+        switchToPage("profilePage");
+    }
+}
+
+// Sharing Functionality
+document.getElementById("shareButton").addEventListener("click", shareCollection);
+
+function shareCollection() {
+    const shareText = `Check out my Norse Runes collection! 
+    Elder Runes: ${collectedRunes.elder.map(r => r.name).join(", ")}
+    Younger Runes: ${collectedRunes.younger.map(r => r.name).join(", ")}
+    #NorseRunesLearning`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'Norse Runes Collection',
+            text: shareText,
+            url: window.location.href
+        }).then(() => {
+            console.log('Share successful');
+        }).catch((error) => {
+            console.log('Error sharing:', error);
+        });
+    } else {
+        alert('Sharing not supported on this browser.');
+    }
+}
+
+// Search Functionality
+document.getElementById("searchInput").addEventListener("input", searchRunes);
+
+function searchRunes() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const elderList = document.getElementById("elderList");
+    const youngerList = document.getElementById("youngerList");
+    const searchResults = document.getElementById("searchResults");
+
+    searchResults.innerHTML = "";
+    elderList.childNodes.forEach(item => {
+        if (item.innerText.toLowerCase().includes(query)) {
+            searchResults.appendChild(item.cloneNode(true));
+        }
+    });
+    youngerList.childNodes.forEach(item => {
+        if (item.innerText.toLowerCase().includes(query)) {
+            searchResults.appendChild(item.cloneNode(true));
+        }
+    });
+
+    if (searchResults.childNodes.length > 0) {
+        searchResults.classList.remove("hidden");
+    } else {
+        searchResults.classList.add("hidden");
+    }
+}
 
 // --- Journal Functionality ---
 let journalEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
@@ -169,4 +257,20 @@ function deleteJournalEntry(index) {
     journalEntries.splice(index, 1);
     saveJournalEntries();
     displayJournalEntries();
+}
+
+// Page Switching Functionality
+const navButtons = document.querySelectorAll(".nav-btn");
+navButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const targetPage = button.getAttribute("data-target");
+        switchToPage(targetPage);
+    });
+});
+
+function switchToPage(pageId) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.add("hidden");
+    });
+    document.getElementById(pageId).classList.remove("hidden");
 }
