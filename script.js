@@ -191,16 +191,10 @@ function saveJournalEntries() {
     localStorage.setItem("journalEntries", JSON.stringify(entries));
 }
 
-function displayJournalEntries() {
-    const savedEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
-    const journalContainer = document.getElementById("journalEntries");
-    journalContainer.innerHTML = ""; // Clear current entries
-    savedEntries.forEach(entry => {
-        const entryElement = document.createElement("div");
-        entryElement.classList.add("journal-entry");
-        entryElement.innerText = entry;
-        journalContainer.appendChild(entryElement);
-    });
+function deleteJournalEntry(index) {
+    journalEntries.splice(index, 1);
+    saveJournalEntries();
+    displayJournalEntries();
 }
 
 // Page Switching Functionality
