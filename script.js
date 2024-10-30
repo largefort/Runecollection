@@ -202,3 +202,19 @@ function displayJournalEntries() {
         journalContainer.appendChild(entryElement);
     });
 }
+
+// Page Switching Functionality
+const navButtons = document.querySelectorAll(".nav-btn");
+navButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const targetPage = button.getAttribute("data-target");
+        switchToPage(targetPage);
+    });
+});
+
+function switchToPage(pageId) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.add("hidden");
+    });
+    document.getElementById(pageId).classList.remove("hidden");
+}
