@@ -13,14 +13,25 @@
         </header>
 
         <main>
+            <!-- Profile Creation Section -->
+            <div id="profilePage" class="page hidden">
+                <h2>Create Profile</h2>
+                <input type="text" id="usernameInput" placeholder="Enter your username (must start with @)">
+                <button id="createProfileButton">Create Profile</button>
+                <p id="profileMessage" class="hidden"></p>
+            </div>
+
             <!-- Roll Page -->
-            <div id="homepage" class="page">
+            <div id="homepage" class="page hidden">
                 <button id="rollButton">Roll for a Rune</button>
+                <input type="text" id="searchInput" placeholder="Search Runes...">
+                <div id="searchResults" class="list hidden"></div>
             </div>
 
             <!-- Collection Page -->
             <div id="runesCollection" class="page hidden">
                 <h2>Your Runes Collection</h2>
+                <button id="shareButton">Share Your Collection</button>
                 <div class="rune-list">
                     <h3>Elder Futhark Runes</h3>
                     <div id="elderList" class="list"></div>
@@ -41,6 +52,7 @@
 
         <!-- Bottom Navigation Bar -->
         <nav class="bottom-nav">
+            <button class="nav-btn" data-target="profilePage">Profile</button>
             <button class="nav-btn" data-target="homepage">Roll</button>
             <button class="nav-btn" data-target="runesCollection">Collection</button>
             <button class="nav-btn" data-target="journalPage">Journal</button>
