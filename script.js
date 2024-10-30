@@ -1,71 +1,81 @@
-// Rune data
-const elderFuthark = [
-    { name: "Fehu", meaning: "Wealth", lore: "Represents material wealth and prosperity." },
-    { name: "Uruz", meaning: "Strength", lore: "Symbolizes strength and health." },
-    { name: "Thurisaz", meaning: "Giant", lore: "Represents protection and conflict." },
-    { name: "Ansuz", meaning: "Wisdom", lore: "Represents knowledge and communication." },
-    { name: "Raido", meaning: "Journey", lore: "Symbolizes travel and movement." },
-    { name: "Kaunan", meaning: "Torch", lore: "Represents creativity and illumination." },
-    { name: "Gebo", meaning: "Gift", lore: "Symbolizes generosity and partnerships." },
-    { name: "Wunjo", meaning: "Joy", lore: "Represents joy and harmony." },
-    { name: "Hagalaz", meaning: "Hail", lore: "Symbolizes disruption and transformation." },
-    { name: "Nauthiz", meaning: "Need", lore: "Represents necessity and survival." },
-    { name: "Isa", meaning: "Ice", lore: "Symbolizes stagnation and stillness." },
-    { name: "Jera", meaning: "Year", lore: "Represents cycles and harvest." },
-    { name: "Eihwaz", meaning: "Yew", lore: "Symbolizes resilience and endurance." },
-    { name: "Pethro", meaning: "Lot", lore: "Represents chance and fate." },
-    { name: "Algiz", meaning: "Protection", lore: "Symbolizes protection and defense." },
-    { name: "Sowilo", meaning: "Sun", lore: "Represents success and positivity." },
-    { name: "Tiwaz", meaning: "Victory", lore: "Symbolizes honor and justice." },
-    { name: "Berkano", meaning: "Birch", lore: "Represents fertility and growth." },
-    { name: "Ehwaz", meaning: "Horse", lore: "Symbolizes trust and partnership." },
-    { name: "Madr", meaning: "Man", lore: "Represents humanity and community." },
-    { name: "Laguz", meaning: "Water", lore: "Symbolizes intuition and emotions." },
-    { name: "Inguz", meaning: "Fertility", lore: "Represents new beginnings and fertility." },
-    { name: "Dagaz", meaning: "Day", lore: "Symbolizes awakening and transformation." },
-    { name: "Othala", meaning: "Heritage", lore: "Represents inheritance and legacy." },
-    { name: "Bree", meaning: "Home", lore: "Symbolizes comfort and security." },
+// Elder Futhark Rune Data
+const elderFutharkRunes = [
+    { name: "Fehu", description: "Wealth", lore: "Symbolizes prosperity and good fortune." },
+    { name: "Uruz", description: "Strength", lore: "Represents physical and spiritual strength." },
+    { name: "Thurisaz", description: "Giant", lore: "Symbolizes chaos and conflict, as well as powerful forces." },
+    { name: "Ansuz", description: "God", lore: "Represents communication and divine inspiration." },
+    { name: "Raidho", description: "Journey", lore: "Symbolizes a journey, both physical and spiritual." },
+    { name: "Kenaz", description: "Torch", lore: "Represents knowledge, creativity, and enlightenment." },
+    { name: "Gebo", description: "Gift", lore: "Symbolizes generosity and relationships." },
+    { name: "Wunjo", description: "Joy", lore: "Represents harmony and joy." },
+    { name: "Hagalaz", description: "Hail", lore: "Symbolizes transformation through hardship." },
+    { name: "Nauthiz", description: "Need", lore: "Represents necessity and resilience." },
+    { name: "Isa", description: "Ice", lore: "Symbolizes stillness and challenges." },
+    { name: "Jera", description: "Year", lore: "Represents cycles, harvest, and reward." },
+    { name: "Eihwaz", description: "Yew Tree", lore: "Symbolizes endurance and connection between worlds." },
+    { name: "Perthro", description: "Mystery", lore: "Represents fate, secrets, and the unknown." },
+    { name: "Algiz", description: "Elk", lore: "Symbolizes protection and defense." },
+    { name: "Sowilo", description: "Sun", lore: "Represents success, guidance, and energy." },
+    { name: "Tiwaz", description: "Tyr", lore: "Symbolizes honor, sacrifice, and justice." },
+    { name: "Berkano", description: "Birch", lore: "Represents growth, fertility, and new beginnings." },
+    { name: "Ehwaz", description: "Horse", lore: "Symbolizes teamwork, loyalty, and trust." },
+    { name: "Mannaz", description: "Man", lore: "Represents humanity, the self, and community." },
+    { name: "Laguz", description: "Water", lore: "Symbolizes flow, intuition, and the subconscious." },
+    { name: "Ingwaz", description: "Seed", lore: "Represents fertility, potential, and growth." },
+    { name: "Dagaz", description: "Day", lore: "Symbolizes breakthrough, transformation, and clarity." },
+    { name: "Othala", description: "Inheritance", lore: "Represents heritage, tradition, and legacy." }
 ];
 
-const youngerFuthark = [
-    { name: "F", meaning: "Wealth", lore: "Represents material wealth and prosperity." },
-    { name: "U", meaning: "Strength", lore: "Symbolizes strength and health." },
-    { name: "Þ", meaning: "Giant", lore: "Represents protection and conflict." },
-    { name: "A", meaning: "Wisdom", lore: "Represents knowledge and communication." },
-    { name: "R", meaning: "Journey", lore: "Symbolizes travel and movement." },
-    { name: "K", meaning: "Torch", lore: "Represents creativity and illumination." },
-    { name: "G", meaning: "Gift", lore: "Symbolizes generosity and partnerships." },
-    { name: "V", meaning: "Joy", lore: "Represents joy and harmony." },
-    { name: "H", meaning: "Hail", lore: "Symbolizes disruption and transformation." },
-    { name: "N", meaning: "Need", lore: "Represents necessity and survival." },
-    { name: "I", meaning: "Ice", lore: "Symbolizes stagnation and stillness." },
-    { name: "J", meaning: "Year", lore: "Represents cycles and harvest." },
-    { name: "E", meaning: "Yew", lore: "Symbolizes resilience and endurance." },
-    { name: "P", meaning: "Lot", lore: "Represents chance and fate." },
-    { name: "Z", meaning: "Protection", lore: "Symbolizes protection and defense." },
-    { name: "S", meaning: "Sun", lore: "Represents success and positivity." },
+// Younger Futhark Rune Data
+const youngerFutharkRunes = [
+    { name: "Fe", description: "Livestock", lore: "Represents wealth and resources." },
+    { name: "Ur", description: "Rain", lore: "Symbolizes strength and endurance." },
+    { name: "Thurs", description: "Giant", lore: "Represents chaotic forces and challenges." },
+    { name: "As", description: "God", lore: "Symbolizes divine inspiration and communication." },
+    { name: "Reið", description: "Journey", lore: "Represents travel and spiritual movement." },
+    { name: "Kaun", description: "Ulcer", lore: "Symbolizes pain, hardship, and healing." },
+    { name: "Hagall", description: "Hail", lore: "Represents transformation and change." },
+    { name: "Naudhr", description: "Need", lore: "Symbolizes necessity and endurance." },
+    { name: "Is", description: "Ice", lore: "Represents stillness and challenge." },
+    { name: "Ar", description: "Harvest", lore: "Represents reward and abundance." },
+    { name: "Sol", description: "Sun", lore: "Symbolizes success and energy." },
+    { name: "Tyr", description: "Honor", lore: "Represents justice, honor, and self-sacrifice." },
+    { name: "Bjarkan", description: "Birch", lore: "Represents new beginnings and growth." },
+    { name: "Madhr", description: "Man", lore: "Symbolizes humanity and the self." },
+    { name: "Løgr", description: "Water", lore: "Represents intuition and flow." },
+    { name: "Yr", description: "Yew", lore: "Symbolizes endurance and resilience." }
 ];
 
-// Collections for Runes
-const collectedRunes = {
-    elder: [],
-    younger: []
-};
+// Collected Runes Data
+const collectedRunes = { elder: [], younger: [] };
 
-// Roll for a Rune function
+// Profile Data
+let userProfile = { username: "" };
+
+// Roll Button Event and Local Storage Load Functions
+document.getElementById("rollButton").addEventListener("click", rollForRune);
+window.addEventListener("load", () => {
+    loadRunesFromStorage();
+    displayJournalEntries();
+    checkUserProfile();
+});
+
+// Load collections from localStorage
+function loadRunesFromStorage() {
+    const savedElderRunes = JSON.parse(localStorage.getItem("elderRunes")) || [];
+    const savedYoungerRunes = JSON.parse(localStorage.getItem("youngerRunes")) || [];
+
+    savedElderRunes.forEach(rune => addRuneToCollection(rune, "elder"));
+    savedYoungerRunes.forEach(rune => addRuneToCollection(rune, "younger"));
+}
+
+// Roll for a Rune
 function rollForRune() {
-    const randomElder = Math.floor(Math.random() * elderFuthark.length);
-    const randomYounger = Math.floor(Math.random() * youngerFuthark.length);
-    const elderRune = elderFuthark[randomElder];
-    const youngerRune = youngerFuthark[randomYounger];
-
-    // Decide which rune to add based on random chance (for example)
-    if (Math.random() < 0.5) {
-        addRuneToCollection(elderRune, "elder");
-        alert(`You rolled: ${elderRune.name} - ${elderRune.meaning}`);
-    } else {
-        addRuneToCollection(youngerRune, "younger");
-        alert(`You rolled: ${youngerRune.name} - ${youngerRune.meaning}`);
+    const allRunes = elderFutharkRunes.concat(youngerFutharkRunes);
+    const randomRune = allRunes[Math.floor(Math.random() * allRunes.length)];
+    
+    if (randomRune.name.includes("Fehu") || randomRune.name.includes("Uruz")) { // Example probability
+        addRuneToCollection(randomRune, randomRune.name.includes("Fehu") ? "elder" : "younger");
     }
 }
 
@@ -74,89 +84,121 @@ function addRuneToCollection(rune, type) {
     const listId = type === "elder" ? "elderList" : "youngerList";
     const list = document.getElementById(listId);
 
-    // Check if rune is already collected
     if (collectedRunes[type].some(collected => collected.name === rune.name)) return;
 
     collectedRunes[type].push(rune);
     saveToStorage();
 
-    // Create a new rune element
     const runeElement = document.createElement("div");
     runeElement.classList.add("rune-item");
     runeElement.innerText = rune.name;
 
-    // Add click event for the modal
     runeElement.addEventListener("click", () => openModal(rune));
     list.appendChild(runeElement);
 }
 
 // Save to Local Storage
 function saveToStorage() {
-    localStorage.setItem("runes", JSON.stringify(collectedRunes));
+    localStorage.setItem("elderRunes", JSON.stringify(collectedRunes.elder));
+    localStorage.setItem("youngerRunes", JSON.stringify(collectedRunes.younger));
 }
 
-// Load from Local Storage
-function loadFromStorage() {
-    const storedRunes = localStorage.getItem("runes");
-    if (storedRunes) {
-        Object.assign(collectedRunes, JSON.parse(storedRunes));
-        updateRuneCollections();
-    }
-}
-
-// Update the collections in the UI
-function updateRuneCollections() {
+// Display Runes
+function displayRunes() {
     const elderList = document.getElementById("elderList");
     const youngerList = document.getElementById("youngerList");
 
-    elderList.innerHTML = ""; // Clear the list first
-    youngerList.innerHTML = ""; // Clear the list first
+    elderList.innerHTML = "";
+    youngerList.innerHTML = "";
 
-    collectedRunes.elder.forEach(rune => {
-        const div = document.createElement("div");
-        div.className = "rune-item";
-        div.innerHTML = rune.name;
-        div.title = rune.meaning; // Show meaning on hover
-        div.addEventListener("click", () => openModal(rune));
-        elderList.appendChild(div);
-    });
-
-    collectedRunes.younger.forEach(rune => {
-        const div = document.createElement("div");
-        div.className = "rune-item";
-        div.innerHTML = rune.name;
-        div.title = rune.meaning; // Show meaning on hover
-        div.addEventListener("click", () => openModal(rune));
-        youngerList.appendChild(div);
-    });
+    collectedRunes.elder.forEach(rune => createRuneElement(rune, elderList));
+    collectedRunes.younger.forEach(rune => createRuneElement(rune, youngerList));
 }
 
-// Open modal with rune details
+// Create Rune Element
+function createRuneElement(rune, list) {
+    const runeElement = document.createElement("div");
+    runeElement.classList.add("rune-item");
+    runeElement.innerText = rune.name;
+    runeElement.addEventListener("click", () => openModal(rune));
+    list.appendChild(runeElement);
+}
+
+// Modal Functionality
 function openModal(rune) {
     document.getElementById("runeName").innerText = rune.name;
-    document.getElementById("runeDescription").innerText = rune.meaning;
+    document.getElementById("runeDescription").innerText = rune.description;
     document.getElementById("runeLore").innerText = rune.lore;
     document.getElementById("modal").classList.remove("hidden");
 }
 
-// Close modal
 document.getElementById("closeModal").addEventListener("click", () => {
     document.getElementById("modal").classList.add("hidden");
 });
 
-// Set up event listener for the roll button
-document.getElementById("rollButton").addEventListener("click", rollForRune);
+// Profile Creation Functionality
+document.getElementById("createProfileButton").addEventListener("click", createProfile);
 
-// Navigation buttons to switch pages
-document.querySelectorAll(".nav-btn").forEach(button => {
-    button.addEventListener("click", (event) => {
-        const targetPage = event.target.dataset.target;
-        document.querySelectorAll(".page").forEach(page => {
-            page.classList.add("hidden");
-        });
-        document.getElementById(targetPage).classList.remove("hidden");
+function createProfile() {
+    const username = document.getElementById("usernameInput").value.trim();
+    if (username.startsWith("@") && username.length > 1) {
+        userProfile.username = username;
+        document.getElementById("profileMessage").innerText = "Profile created: " + username;
+        document.getElementById("profileMessage").classList.remove("hidden");
+        localStorage.setItem("userProfile", JSON.stringify(userProfile));
+        switchToPage("homepage");
+    } else {
+        alert("Please enter a valid username starting with '@'.");
+    }
+}
+
+function checkUserProfile() {
+    const savedProfile = JSON.parse(localStorage.getItem("userProfile"));
+    if (savedProfile && savedProfile.username) {
+        userProfile = savedProfile;
+        document.getElementById("profileMessage").innerText = "Welcome back, " + userProfile.username;
+        document.getElementById("profileMessage").classList.remove("hidden");
+        switchToPage("homepage");
+    }
+}
+
+function switchToPage(pageId) {
+    const pages = document.querySelectorAll(".page");
+    pages.forEach(page => page.classList.add("hidden"));
+    document.getElementById(pageId).classList.remove("hidden");
+}
+
+// Journal Entries Functionality
+document.getElementById("addJournalButton").addEventListener("click", addJournalEntry);
+
+function addJournalEntry() {
+    const journalInput = document.getElementById("journalInput").value.trim();
+    if (journalInput) {
+        const entryElement = document.createElement("div");
+        entryElement.classList.add("journal-entry");
+        entryElement.innerText = journalInput;
+        document.getElementById("journalEntries").appendChild(entryElement);
+        document.getElementById("journalInput").value = "";
+        saveJournalEntries();
+    } else {
+        alert("Please enter a journal entry.");
+    }
+}
+
+function saveJournalEntries() {
+    const entries = Array.from(document.getElementsByClassName("journal-entry"))
+        .map(entry => entry.innerText);
+    localStorage.setItem("journalEntries", JSON.stringify(entries));
+}
+
+function displayJournalEntries() {
+    const savedEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+    const journalContainer = document.getElementById("journalEntries");
+    journalContainer.innerHTML = ""; // Clear current entries
+    savedEntries.forEach(entry => {
+        const entryElement = document.createElement("div");
+        entryElement.classList.add("journal-entry");
+        entryElement.innerText = entry;
+        journalContainer.appendChild(entryElement);
     });
-});
-
-// Load stored runes on initialization
-loadFromStorage();
+}
